@@ -40,6 +40,8 @@ class GetRiddetTopLinksRequest: HTTPRequestProtocol {
     func urlRequest(baseURL: URL) -> URLRequest? {
         guard var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else { return nil }
 
+        urlComponents.path = "/top/.json"
+
         var queryItems: [URLQueryItem] = []
         queryItems.append(URLQueryItem(name: "limit", value: "\(self.limit)"))
 
