@@ -79,7 +79,6 @@ class GetRiddetTopLinksRequest: HTTPRequestProtocol {
 
 extension GetRiddetTopLinksRequest {
     enum RequestError: Error {
-        case unknown
         case wrongHTTPResponseCode
         case cannotDecodeResponse(error: Error)
     }

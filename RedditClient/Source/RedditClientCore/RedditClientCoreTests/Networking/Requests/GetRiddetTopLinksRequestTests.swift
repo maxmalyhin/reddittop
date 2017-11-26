@@ -59,6 +59,7 @@ class GetRiddetTopLinksRequestTests: XCTestCase {
         XCTAssertTrue(completionCalled)
 
         XCTAssertNotNil(request.response)
+        XCTAssertNil(request.error)
 
         XCTAssertEqual(request.response?.afterId, "t3_7fhn5d")
         XCTAssertNil(request.response?.beforeId)
@@ -72,6 +73,30 @@ class GetRiddetTopLinksRequestTests: XCTestCase {
         XCTAssertEqual(redditLink?.link.date, Date(timeIntervalSince1970: 1511640672))
         XCTAssertEqual(redditLink?.link.thumbnailURL.absoluteString, "https://b.thumbs.redditmedia.com/D16L9-URUROjmUnEzMOT49Yv9EA4gz0Y3pgToDGFOHk.jpg")
     }
+
+    func testThat_WhenInvalidResponseReceived_ThenItIsParsedWithError() {
+        guard let responseData = FixtureLoader.loadData(fromFileNamed: "Empty.json") else {
+            XCTAssertTrue(false, "Cannot load fixture")
+            return
+        }
+
+        let response = HTTPURLResponse.defaultResponse(withCode: 200)
+
+        var completionCalled = false
+        let completionHandler = {
+            completionCalled = true
+        }
+
+        let request = GetRiddetTopLinksRequest(limit: 10)
+        request.handle(httpResponse: response, repsopnseData: responseData, completion: completionHandler)
+
+        XCTAssertTrue(completionCalled)
+
+        XCTAssertNil(request.response)
+        XCTAssertNotNil(request.error)
+    }
+
+    // TODO: Extend to validate error handling.
 }
 
 extension URL {
