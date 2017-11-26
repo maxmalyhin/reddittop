@@ -24,9 +24,13 @@ final public class RedditTopLinksDataProvider: RedditTopLinksDataProviderProtoco
     private let networkManager: NetworkManagerProtocol
     private let pageSize: Int
 
-    init(pageSize: Int = 25, networkManager: NetworkManagerProtocol) {
+    init(pageSize: Int, networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
         self.pageSize = pageSize
+    }
+
+    public convenience init(pageSize: Int = 25) {
+        self.init(pageSize: pageSize, networkManager: DefaultCoreComponents.defaultComponents.networkManager)
     }
 
     public func loadNextPage(after: RedditLinkItem?, completion: @escaping RedditTopLinksDataProviderProtocol.LoadCompletion) {

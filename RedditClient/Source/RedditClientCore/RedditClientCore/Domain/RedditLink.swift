@@ -9,8 +9,8 @@
 import Foundation
 
 public struct RedditLinkItem: Decodable {
-    let kind: String
-    let link: RedditLink
+    public let kind: String
+    public let link: RedditLink
 
     enum CodingKeys : String, CodingKey {
         case kind
@@ -19,12 +19,12 @@ public struct RedditLinkItem: Decodable {
 }
 
 public struct RedditLink: Decodable {
-    let identifier: String
-    let title: String
-    let author: String
-    let date: Date
-    let commentsCount: Int
-    let thumbnailURL: URL
+    public let identifier: String
+    public let title: String
+    public let author: String
+    public let date: Date
+    public let commentsCount: Int
+    public let thumbnailURL: URL
 
     enum CodingKeys : String, CodingKey {
         case identifier = "id"
