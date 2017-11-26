@@ -23,6 +23,10 @@
 		ED4260BD1FCB21CB00229B2A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4260BC1FCB21CB00229B2A /* NetworkManager.swift */; };
 		ED4260BF1FCB254500229B2A /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4260BE1FCB254500229B2A /* HTTPRequest.swift */; };
 		ED4260C21FCB28E500229B2A /* GetRiddetTopLinksRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4260C11FCB28E500229B2A /* GetRiddetTopLinksRequest.swift */; };
+		ED4260C91FCB34F800229B2A /* GetRiddetTopLinksValidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = ED4260C81FCB34F800229B2A /* GetRiddetTopLinksValidResponse.json */; };
+		ED4260CC1FCB35B200229B2A /* FixtureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4260CB1FCB35B200229B2A /* FixtureLoader.swift */; };
+		ED4260CD1FCB35E900229B2A /* FixtureLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4260CB1FCB35B200229B2A /* FixtureLoader.swift */; };
+		ED4260CE1FCB36A000229B2A /* GetRiddetTopLinksRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4260C51FCB2B7D00229B2A /* GetRiddetTopLinksRequestTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,9 @@
 		ED4260BC1FCB21CB00229B2A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		ED4260BE1FCB254500229B2A /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		ED4260C11FCB28E500229B2A /* GetRiddetTopLinksRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRiddetTopLinksRequest.swift; sourceTree = "<group>"; };
+		ED4260C51FCB2B7D00229B2A /* GetRiddetTopLinksRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRiddetTopLinksRequestTests.swift; sourceTree = "<group>"; };
+		ED4260C81FCB34F800229B2A /* GetRiddetTopLinksValidResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetRiddetTopLinksValidResponse.json; sourceTree = "<group>"; };
+		ED4260CB1FCB35B200229B2A /* FixtureLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +218,8 @@
 		ED4260A81FCB19FD00229B2A /* RedditClientCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				ED4260CA1FCB359400229B2A /* FixtureLoader */,
+				ED4260C31FCB2B4D00229B2A /* Networking */,
 				ED4260A91FCB19FD00229B2A /* RedditClientCoreTests.swift */,
 				ED4260AB1FCB19FD00229B2A /* Info.plist */,
 			);
@@ -241,6 +250,39 @@
 				ED4260C11FCB28E500229B2A /* GetRiddetTopLinksRequest.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		ED4260C31FCB2B4D00229B2A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				ED4260C41FCB2B5700229B2A /* Requests */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		ED4260C41FCB2B5700229B2A /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				ED4260C71FCB337800229B2A /* Fixtures */,
+				ED4260C51FCB2B7D00229B2A /* GetRiddetTopLinksRequestTests.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		ED4260C71FCB337800229B2A /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				ED4260C81FCB34F800229B2A /* GetRiddetTopLinksValidResponse.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		ED4260CA1FCB359400229B2A /* FixtureLoader */ = {
+			isa = PBXGroup;
+			children = (
+				ED4260CB1FCB35B200229B2A /* FixtureLoader.swift */,
+			);
+			path = FixtureLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +454,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4260C91FCB34F800229B2A /* GetRiddetTopLinksValidResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED4260881FCB19BD00229B2A /* RedditClientTests.swift in Sources */,
+				ED4260CD1FCB35E900229B2A /* FixtureLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +495,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4260CE1FCB36A000229B2A /* GetRiddetTopLinksRequestTests.swift in Sources */,
+				ED4260CC1FCB35B200229B2A /* FixtureLoader.swift in Sources */,
 				ED4260AA1FCB19FD00229B2A /* RedditClientCoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,6 +664,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.malyhin.maksym.RedditClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -634,6 +681,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.malyhin.maksym.RedditClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -646,7 +694,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9K2GX4VRRU;
-				INFOPLIST_FILE = RedditClientTests/Info.plist;
+				INFOPLIST_FILE = Source/App/RedditClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.malyhin.maksym.RedditClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -663,7 +711,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9K2GX4VRRU;
-				INFOPLIST_FILE = RedditClientTests/Info.plist;
+				INFOPLIST_FILE = Source/App/RedditClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.malyhin.maksym.RedditClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -692,6 +740,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -717,6 +766,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.malyhin.maksym.RedditClientCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -730,7 +780,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9K2GX4VRRU;
-				INFOPLIST_FILE = RedditClientCoreTests/Info.plist;
+				INFOPLIST_FILE = Source/RedditClientCore/RedditClientCoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.malyhin.maksym.RedditClientCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -746,7 +796,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9K2GX4VRRU;
-				INFOPLIST_FILE = RedditClientCoreTests/Info.plist;
+				INFOPLIST_FILE = Source/RedditClientCore/RedditClientCoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.malyhin.maksym.RedditClientCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
