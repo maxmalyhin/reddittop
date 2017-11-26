@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RedditLinkItem: Decodable {
+public struct RedditLinkItem: Decodable {
     let kind: String
     let link: RedditLink
 
@@ -18,7 +18,7 @@ struct RedditLinkItem: Decodable {
     }
 }
 
-struct RedditLink: Decodable {
+public struct RedditLink: Decodable {
     let identifier: String
     let title: String
     let author: String
