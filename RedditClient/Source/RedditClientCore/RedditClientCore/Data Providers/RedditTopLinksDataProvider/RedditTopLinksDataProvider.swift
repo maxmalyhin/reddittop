@@ -36,23 +36,30 @@ final public class RedditTopLinksDataProvider: RedditTopLinksDataProviderProtoco
     public func loadNextPage(after: RedditLinkItem?, completion: @escaping RedditTopLinksDataProviderProtocol.LoadCompletion) {
 
         let request = GetRiddetTopLinksRequest(limit: self.pageSize, afterLinkWithId: after?.fullId)
+
+        let callCompletionInMainTread: LoadCompletion = { result in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+
         let _ = self.networkManager.perform(request: request) { (request, error) in
             if let error = error {
-                completion(.failure(error: error))
+                callCompletionInMainTread(.failure(error: error))
                 return
             }
 
             if let error = request.error {
-                completion(.failure(error: error))
+                callCompletionInMainTread(.failure(error: error))
                 return
             }
 
             guard let items = request.response?.links else {
-                completion(.noMoreItems)
+                callCompletionInMainTread(.noMoreItems)
                 return
             }
 
-            completion(.success(items: items))
+            callCompletionInMainTread(.success(items: items))
         }
     }
 }

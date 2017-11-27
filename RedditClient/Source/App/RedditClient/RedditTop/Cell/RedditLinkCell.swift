@@ -9,7 +9,11 @@
 import UIKit
 
 final class RedditLinkCell: UITableViewCell {
-    var viewModel: RedditLinkCellViewModelProtocol?
+    var viewModel: RedditLinkCellViewModelProtocol? {
+        didSet {
+            self.update()
+        }
+    }
 
     func configure(withViewModel viewModel: RedditLinkCellViewModelProtocol) {
         self.viewModel = viewModel
@@ -18,4 +22,6 @@ final class RedditLinkCell: UITableViewCell {
     func update() {
         self.textLabel?.text = self.viewModel?.title
     }
+
+    static let cellIdentifier = "RedditLinkCell"
 }
