@@ -33,9 +33,8 @@ final class RedditLinkCell: UITableViewCell {
 
     func update() {
         self.titleLabel.text = self.viewModel?.title
-        self.authorLabel.text = self.viewModel?.author
+        self.authorLabel.text = self.viewModel?.submittedBy
         self.numberOfCommentLabel.text = self.viewModel?.commentsCountString
-        self.dateLabel.text = self.viewModel?.dateString
     }
 
     static let cellIdentifier = "RedditLinkCell"

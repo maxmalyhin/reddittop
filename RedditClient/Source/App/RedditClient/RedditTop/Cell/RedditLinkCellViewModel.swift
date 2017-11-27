@@ -14,6 +14,8 @@ protocol RedditLinkCellViewModelProtocol: class {
     var author: String { get }
     var commentsCountString: String { get }
     var dateString: String { get }
+
+    var submittedBy: String { get }
 }
 
 final class RedditLinkCellViewModel: RedditLinkCellViewModelProtocol {
@@ -33,12 +35,18 @@ final class RedditLinkCellViewModel: RedditLinkCellViewModelProtocol {
     }
 
     var commentsCountString: String {
-        return "\(self.linkItem.link.commentsCount)"
+        // TODO: Implement proper singular/plural string composing with localization support
+        return "\(self.linkItem.link.commentsCount) comment(s)"
     }
 
     var dateString: String {
         return "\(self.linkItem.link.date)" // TODO: Implement
     }
 
+    var submittedBy: String {
+        let relativeTimeInterval = self.linkItem.link.date.timeIntervalSinceNow
+        assert(relativeTimeInterval <= 0, "The submit date must be in the past")
 
+        return "submitted \(relativeTimeInterval.humanFriendlyString) ago by \(self.author) "
+    }
 }

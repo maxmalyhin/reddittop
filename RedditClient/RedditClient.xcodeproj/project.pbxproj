@@ -35,6 +35,8 @@
 		ED4260DA1FCB528F00229B2A /* RedditClientCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED42609A1FCB19FD00229B2A /* RedditClientCore.framework */; };
 		ED4260E31FCB539000229B2A /* GetRiddetTopLinksRequestIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4260E21FCB539000229B2A /* GetRiddetTopLinksRequestIntegrationTests.swift */; };
 		ED4260E71FCB60F600229B2A /* RedditTopLinksDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4260E61FCB60F600229B2A /* RedditTopLinksDataProvider.swift */; };
+		ED614F3A1FCBB3B800AE9331 /* TimeInterval+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED614F391FCBB3B800AE9331 /* TimeInterval+Formatter.swift */; };
+		ED614F3E1FCBBCAB00AE9331 /* TimeInterval+FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED614F3D1FCBBCAB00AE9331 /* TimeInterval+FormatterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		ED4260D91FCB528F00229B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED4260E21FCB539000229B2A /* GetRiddetTopLinksRequestIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRiddetTopLinksRequestIntegrationTests.swift; sourceTree = "<group>"; };
 		ED4260E61FCB60F600229B2A /* RedditTopLinksDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditTopLinksDataProvider.swift; sourceTree = "<group>"; };
+		ED614F391FCBB3B800AE9331 /* TimeInterval+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Formatter.swift"; sourceTree = "<group>"; };
+		ED614F3D1FCBBCAB00AE9331 /* TimeInterval+FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+FormatterTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +287,7 @@
 		ED42609B1FCB19FD00229B2A /* RedditClientCore */ = {
 			isa = PBXGroup;
 			children = (
+				ED614F381FCBB39200AE9331 /* Utils */,
 				ED0B81E71FCB7D6E00981262 /* Components */,
 				ED4260E41FCB609800229B2A /* Data Providers */,
 				ED4260B91FCB1BFD00229B2A /* Domain */,
@@ -404,6 +409,31 @@
 				ED4260E61FCB60F600229B2A /* RedditTopLinksDataProvider.swift */,
 			);
 			path = RedditTopLinksDataProvider;
+			sourceTree = "<group>";
+		};
+		ED614F381FCBB39200AE9331 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ED614F3B1FCBB3C900AE9331 /* TimeInterval+Formatter */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		ED614F3B1FCBB3C900AE9331 /* TimeInterval+Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				ED614F3C1FCBBC9200AE9331 /* Tests */,
+				ED614F391FCBB3B800AE9331 /* TimeInterval+Formatter.swift */,
+			);
+			path = "TimeInterval+Formatter";
+			sourceTree = "<group>";
+		};
+		ED614F3C1FCBBC9200AE9331 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				ED614F3D1FCBBCAB00AE9331 /* TimeInterval+FormatterTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -632,6 +662,7 @@
 			files = (
 				ED4260881FCB19BD00229B2A /* RedditClientTests.swift in Sources */,
 				ED4260CD1FCB35E900229B2A /* FixtureLoader.swift in Sources */,
+				ED614F3E1FCBBCAB00AE9331 /* TimeInterval+FormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +674,7 @@
 				ED4260E71FCB60F600229B2A /* RedditTopLinksDataProvider.swift in Sources */,
 				ED4260BF1FCB254500229B2A /* HTTPRequest.swift in Sources */,
 				ED4260BD1FCB21CB00229B2A /* NetworkManager.swift in Sources */,
+				ED614F3A1FCBB3B800AE9331 /* TimeInterval+Formatter.swift in Sources */,
 				ED4260C21FCB28E500229B2A /* GetRiddetTopLinksRequest.swift in Sources */,
 				ED4260BB1FCB1C8F00229B2A /* RedditLink.swift in Sources */,
 			);
