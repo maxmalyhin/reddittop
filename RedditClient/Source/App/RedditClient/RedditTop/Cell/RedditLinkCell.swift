@@ -9,6 +9,18 @@
 import UIKit
 
 final class RedditLinkCell: UITableViewCell {
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var authorLabel: UILabel!
+    @IBOutlet var numberOfCommentLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var thumbnailImageView: UIImageView!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+
     var viewModel: RedditLinkCellViewModelProtocol? {
         didSet {
             self.update()
@@ -20,7 +32,10 @@ final class RedditLinkCell: UITableViewCell {
     }
 
     func update() {
-        self.textLabel?.text = self.viewModel?.title
+        self.titleLabel.text = self.viewModel?.title
+        self.authorLabel.text = self.viewModel?.author
+        self.numberOfCommentLabel.text = self.viewModel?.commentsCountString
+        self.dateLabel.text = self.viewModel?.dateString
     }
 
     static let cellIdentifier = "RedditLinkCell"

@@ -22,6 +22,9 @@ final class RedditTopViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 80
+
         self.updateState(new: self.viewModel.state, old: .initial)
 
         self.viewModel.viewDidLoad()
@@ -30,7 +33,7 @@ final class RedditTopViewController: UITableViewController {
     // MARK: View model state
 
     fileprivate func updateTableView() {
-        self.tableView.reloadSections(IndexSet([0]), with: .automatic)
+        self.tableView.reloadSections(IndexSet([0]), with: .bottom)
     }
 
     fileprivate func updateState(new: RedditTopViewModelState, old: RedditTopViewModelState) {
