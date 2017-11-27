@@ -9,6 +9,9 @@
 import UIKit
 
 final class RedditTopViewController: UITableViewController {
+    @IBOutlet var loadMoreIndicatorView: UIActivityIndicatorView!
+    @IBOutlet var noMoreItemsLabel: UILabel!
+
     lazy var viewModel: RedditTopViewModelProtocol = {
         let viewModel = RedditTopViewController.createDefaultViewModel()
         viewModel.delegate = self
@@ -19,22 +22,38 @@ final class RedditTopViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.configureWithViewModel()
+        self.updateState(new: self.viewModel.state, old: .initial)
+
         self.viewModel.viewDidLoad()
     }
 
     // MARK: View model state
-    private func configureWithViewModel() {
-        self.updateTableView()
-        self.updateState()
-    }
 
     fileprivate func updateTableView() {
         self.tableView.reloadSections(IndexSet([0]), with: .automatic)
     }
 
-    fileprivate func updateState() {
-        
+    fileprivate func updateState(new: RedditTopViewModelState, old: RedditTopViewModelState) {
+        self.updateLoadingMoreIndicator(state: new)
+    }
+
+    private func updateLoadingMoreIndicator(state: RedditTopViewModelState) {
+        switch state {
+        case .initial,
+             .canLoadMore,
+             .loadingMore:
+            self.noMoreItemsLabel.isHidden = true
+            self.loadMoreIndicatorView.startAnimating()
+        case .allDataLoaded:
+            self.noMoreItemsLabel.text = NSLocalizedString("No More Links Available", comment: "")
+            self.noMoreItemsLabel.isHidden = false
+            self.loadMoreIndicatorView.stopAnimating()
+        case .error:
+            // TODO: Implement more user freindly error handling
+            self.noMoreItemsLabel.isHidden = false
+            self.loadMoreIndicatorView.stopAnimating()
+            self.noMoreItemsLabel.text = NSLocalizedString("Error", comment: "")
+        }
     }
 }
 
@@ -59,11 +78,19 @@ extension RedditTopViewController {
 
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let isLastCell = indexPath.row == tableView.numberOfRows(inSection: 0) - 1
+
+        if isLastCell {
+            self.viewModel.viewReachedEndOfData()
+        }
+    }
 }
 
 extension RedditTopViewController: RedditTopViewModelDelegate {
-    func viewModelDidUpdateState(_ viewModel: RedditTopViewModelProtocol) {
-        self.updateState()
+    func viewModelDidUpdateState(_ viewModel: RedditTopViewModelProtocol, oldState: RedditTopViewModelState) {
+        self.updateState(new: viewModel.state, old: oldState)
     }
 
     func viewModelDidUpdateLinks(_ viewModel: RedditTopViewModelProtocol) {

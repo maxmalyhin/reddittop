@@ -11,7 +11,7 @@ import RedditClientCore
 
 protocol RedditTopViewModelDelegate: class {
     func viewModelDidUpdateLinks(_ viewModel: RedditTopViewModelProtocol)
-    func viewModelDidUpdateState(_ viewModel: RedditTopViewModelProtocol)
+    func viewModelDidUpdateState(_ viewModel: RedditTopViewModelProtocol, oldState: RedditTopViewModelState)
 }
 
 enum RedditTopViewModelState {
@@ -51,7 +51,7 @@ class RedditTopViewModel: RedditTopViewModelProtocol {
 
     private(set) var state: RedditTopViewModelState = .initial {
         didSet {
-            self.delegate?.viewModelDidUpdateState(self)
+            self.delegate?.viewModelDidUpdateState(self, oldState: oldValue)
         }
     }
 

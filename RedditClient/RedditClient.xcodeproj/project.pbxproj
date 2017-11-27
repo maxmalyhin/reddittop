@@ -186,6 +186,7 @@
 		ED0B81DB1FCB70DB00981262 /* RedditTop */ = {
 			isa = PBXGroup;
 			children = (
+				ED0B81EA1FCB933400981262 /* View */,
 				ED0B81E21FCB76D300981262 /* Cell */,
 				ED0B81DC1FCB711700981262 /* RedditTopViewController.swift */,
 				ED0B81DE1FCB712700981262 /* RedditTopViewModel.swift */,
@@ -209,6 +210,13 @@
 				ED0B81E81FCB7D9000981262 /* RedditClientCoreComponents.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		ED0B81EA1FCB933400981262 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		ED4260641FCB19BC00229B2A = {
