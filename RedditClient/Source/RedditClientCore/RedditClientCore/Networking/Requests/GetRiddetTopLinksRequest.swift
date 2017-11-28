@@ -44,6 +44,7 @@ class GetRiddetTopLinksRequest: HTTPRequestProtocol {
 
         var queryItems: [URLQueryItem] = []
         queryItems.append(URLQueryItem(name: "limit", value: "\(self.limit)"))
+        queryItems.append(URLQueryItem(name: "raw_json", value: "1"))
 
         if let afterId = self.afterId {
             queryItems.append(URLQueryItem(name: "after", value: afterId))

@@ -26,6 +26,7 @@ public struct RedditLink: Decodable {
     public let date: Date
     public let commentsCount: Int
     public let thumbnailURL: URL?
+    public let preview: Preview?
 
     enum CodingKeys : String, CodingKey {
         case identifier = "id"
@@ -35,5 +36,10 @@ public struct RedditLink: Decodable {
         case date = "created_utc"
         case commentsCount = "num_comments"
         case thumbnailURL = "thumbnail"
+        case preview
+    }
+
+    public struct Preview: Decodable {
+        public let images: [RedditImage]
     }
 }
