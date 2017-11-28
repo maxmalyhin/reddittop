@@ -57,8 +57,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsA-Qw-rJA" userLabel="Thumbnail Placeholder">
                                                     <rect key="frame" x="0.0" y="0.0" width="72" height="79.5"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wsx-hP-8WC">
+                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wsx-hP-8WC">
                                                             <rect key="frame" x="0.0" y="4" width="72" height="72"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="wsx-hP-8WC" secondAttribute="height" multiplier="1:1" id="ADD-Sw-9WN"/>
                                                             </constraints>
@@ -106,6 +107,7 @@
                                         <constraint firstItem="LbH-s6-34o" firstAttribute="top" secondItem="BQH-xR-NXL" secondAttribute="top" id="e0L-qv-F4G"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="authorLabel" destination="d7P-tq-xDB" id="KWE-QF-hEc"/>
                                     <outlet property="numberOfCommentLabel" destination="rIY-Gs-PVJ" id="hxX-Fj-6bi"/>

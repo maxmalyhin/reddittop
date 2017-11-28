@@ -21,9 +21,14 @@ protocol RedditLinkCellViewModelProtocol: class {
 
     func cellWillBeDisplayed()
     func cellWasHidden()
+
+    func thumbnainDidTap()
+
+    var presentImageHandler: ((_ imageURL: URL) -> Void)? { get set }
 }
 
 final class RedditLinkCellViewModel: RedditLinkCellViewModelProtocol {
+
     let imageService: ImageServiceProtocol
 
     let linkItem: RedditLinkItem
@@ -86,5 +91,12 @@ final class RedditLinkCellViewModel: RedditLinkCellViewModelProtocol {
     
     func cellWasHidden() {
         self.imageLoadCancelClosure?()
+    }
+
+    var presentImageHandler: ((URL) -> Void)?
+    func thumbnainDidTap() {
+        guard let previewImage = self.linkItem.link.preview?.images.first else { return }
+
+        self.presentImageHandler?(previewImage.source.url)
     }
 }

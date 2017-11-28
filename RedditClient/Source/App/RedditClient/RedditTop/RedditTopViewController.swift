@@ -84,7 +84,7 @@ extension RedditTopViewController {
         }
 
         let cellViewModel = self.viewModel.linkViewModels[indexPath.row]
-        cell.configure(withViewModel: cellViewModel)
+        cell.configure(withViewModel: cellViewModel, presentingViewController: self)
 
         return cell
     }
