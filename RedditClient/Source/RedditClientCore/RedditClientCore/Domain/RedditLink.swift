@@ -20,6 +20,7 @@ public struct RedditLinkItem: Decodable {
 
 public struct RedditLink: Decodable {
     public let identifier: String
+    public let url: URL
     public let title: String
     public let author: String
     public let date: Date
@@ -28,6 +29,7 @@ public struct RedditLink: Decodable {
 
     enum CodingKeys : String, CodingKey {
         case identifier = "id"
+        case url
         case title
         case author
         case date = "created_utc"

@@ -67,11 +67,12 @@ class GetRiddetTopLinksRequestTests: XCTestCase {
         let redditLink = request.response?.links.first
 
         XCTAssertEqual(redditLink?.link.identifier, "7fhn5d")
+        XCTAssertEqual(redditLink?.link.url.absoluteString, "https://gfycat.com/UnhappyPettyAlaskanmalamute")
         XCTAssertEqual(redditLink?.link.title, "My dog became a Sith Lord.")
         XCTAssertEqual(redditLink?.link.author, "Deathkru")
         XCTAssertEqual(redditLink?.link.commentsCount, 1226)
         XCTAssertEqual(redditLink?.link.date, Date(timeIntervalSince1970: 1511640672))
-        XCTAssertEqual(redditLink?.link.thumbnailURL.absoluteString, "https://b.thumbs.redditmedia.com/D16L9-URUROjmUnEzMOT49Yv9EA4gz0Y3pgToDGFOHk.jpg")
+        XCTAssertEqual(redditLink?.link.thumbnailURL?.absoluteString, "https://b.thumbs.redditmedia.com/D16L9-URUROjmUnEzMOT49Yv9EA4gz0Y3pgToDGFOHk.jpg")
     }
 
     func testThat_WhenInvalidResponseReceived_ThenItIsParsedWithError() {

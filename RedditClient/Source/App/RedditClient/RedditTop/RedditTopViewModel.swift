@@ -12,6 +12,8 @@ import RedditClientCore
 protocol RedditTopViewModelDelegate: class {
     func viewModelDidUpdateLinks(_ viewModel: RedditTopViewModelProtocol)
     func viewModelDidUpdateState(_ viewModel: RedditTopViewModelProtocol, oldState: RedditTopViewModelState)
+
+    func viewModel(_ viewModel: RedditTopViewModelProtocol, viewShouldShowPageWithURL url: URL)
 }
 
 enum RedditTopViewModelState {
@@ -27,6 +29,7 @@ protocol RedditTopViewModelProtocol: class {
 
     func viewDidLoad()
     func viewReachedEndOfData()
+    func linkSelected(atIndex: Int)
 
     var linkViewModels: [RedditLinkCellViewModelProtocol] { get }
     var state: RedditTopViewModelState { get }
@@ -82,5 +85,10 @@ class RedditTopViewModel: RedditTopViewModelProtocol {
             self.links.append(contentsOf: items)
             self.state = .canLoadMore
         }
+    }
+
+    func linkSelected(atIndex index: Int) {
+        let url = self.links[index].link.url
+        self.delegate?.viewModel(self, viewShouldShowPageWithURL: url)
     }
 }

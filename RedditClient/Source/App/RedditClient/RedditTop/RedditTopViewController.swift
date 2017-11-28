@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 final class RedditTopViewController: UITableViewController {
     @IBOutlet var loadMoreIndicatorView: UIActivityIndicatorView!
@@ -58,6 +59,12 @@ final class RedditTopViewController: UITableViewController {
             self.noMoreItemsLabel.text = NSLocalizedString("Error", comment: "")
         }
     }
+
+    // MARK: -
+    func show(url: URL) {
+        let viewController = SFSafariViewController(url: url)
+        self.present(viewController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -95,15 +102,24 @@ extension RedditTopViewController {
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.viewModel.linkViewModels[indexPath.row].cellWasHidden()
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.viewModel.linkSelected(atIndex: indexPath.row)
+    }
 }
 
 extension RedditTopViewController: RedditTopViewModelDelegate {
+
     func viewModelDidUpdateState(_ viewModel: RedditTopViewModelProtocol, oldState: RedditTopViewModelState) {
         self.updateState(new: viewModel.state, old: oldState)
     }
 
     func viewModelDidUpdateLinks(_ viewModel: RedditTopViewModelProtocol) {
         self.updateTableView()
+    }
+
+    func viewModel(_ viewModel: RedditTopViewModelProtocol, viewShouldShowPageWithURL url: URL) {
+        self.show(url: url)
     }
 }
 
