@@ -24,7 +24,7 @@ public struct RedditLink: Decodable {
     public let author: String
     public let date: Date
     public let commentsCount: Int
-    public let thumbnailURL: URL
+    public let thumbnailURL: URL?
 
     enum CodingKeys : String, CodingKey {
         case identifier = "id"

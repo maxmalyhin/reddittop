@@ -83,11 +83,17 @@ extension RedditTopViewController {
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let isLastCell = indexPath.row == tableView.numberOfRows(inSection: 0) - 1
 
+        self.viewModel.linkViewModels[indexPath.row].cellWillBeDisplayed()
+
+        let isLastCell = indexPath.row == tableView.numberOfRows(inSection: 0) - 1
         if isLastCell {
             self.viewModel.viewReachedEndOfData()
         }
+    }
+
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewModel.linkViewModels[indexPath.row].cellWasHidden()
     }
 }
 

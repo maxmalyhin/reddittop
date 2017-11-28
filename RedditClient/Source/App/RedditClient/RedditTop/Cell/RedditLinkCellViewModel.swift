@@ -14,16 +14,24 @@ protocol RedditLinkCellViewModelProtocol: class {
     var author: String { get }
     var commentsCountString: String { get }
     var dateString: String { get }
-
     var submittedBy: String { get }
+    var thumbnail: UIImage? { get }
+
+    var thumbnailUpdateHandler: (() -> Void)? { get set }
+
+    func cellWillBeDisplayed()
+    func cellWasHidden()
 }
 
 final class RedditLinkCellViewModel: RedditLinkCellViewModelProtocol {
+    let imageService: ImageServiceProtocol
 
     let linkItem: RedditLinkItem
 
-    init(linkItem: RedditLinkItem) {
+    init(linkItem: RedditLinkItem,
+         imageService: ImageServiceProtocol = ImageServiceProvider.defaultImageService) {
         self.linkItem = linkItem
+        self.imageService = imageService
     }
 
     var title: String {
@@ -48,5 +56,35 @@ final class RedditLinkCellViewModel: RedditLinkCellViewModelProtocol {
         assert(relativeTimeInterval <= 0, "The submit date must be in the past")
 
         return "submitted \(relativeTimeInterval.humanFriendlyString) ago by \(self.author) "
+    }
+
+    var thumbnail: UIImage? {
+        didSet {
+            self.thumbnailUpdateHandler?()
+        }
+    }
+    var thumbnailUpdateHandler: (() -> Void)?
+
+    var imageLoadCancelClosure: ImageServiceProtocol.CancelationHandler? {
+        willSet {
+            self.imageLoadCancelClosure?()
+        }
+    }
+
+    func cellWillBeDisplayed() {
+        self.thumbnail = #imageLiteral(resourceName: "reddit-icon")
+        
+        guard let thumbnailURL = self.linkItem.link.thumbnailURL else { return }
+
+        self.imageLoadCancelClosure = self.imageService.getImage(forURL: thumbnailURL) { [weak self] image in
+
+            if image != nil {
+                self?.thumbnail = image
+            }
+        }
+    }
+    
+    func cellWasHidden() {
+        self.imageLoadCancelClosure?()
     }
 }

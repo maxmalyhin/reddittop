@@ -24,6 +24,9 @@ final class RedditLinkCell: UITableViewCell {
     var viewModel: RedditLinkCellViewModelProtocol? {
         didSet {
             self.update()
+            self.viewModel?.thumbnailUpdateHandler = { [weak self] in
+                self?.updateThumbnail()
+            }
         }
     }
 
@@ -35,6 +38,10 @@ final class RedditLinkCell: UITableViewCell {
         self.titleLabel.text = self.viewModel?.title
         self.authorLabel.text = self.viewModel?.submittedBy
         self.numberOfCommentLabel.text = self.viewModel?.commentsCountString
+    }
+
+    func updateThumbnail() {
+        self.thumbnailImageView.image = self.viewModel?.thumbnail
     }
 
     static let cellIdentifier = "RedditLinkCell"
