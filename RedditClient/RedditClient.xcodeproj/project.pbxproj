@@ -15,6 +15,11 @@
 		ED0B81E41FCB770400981262 /* RedditLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B81E31FCB770400981262 /* RedditLinkCell.swift */; };
 		ED0B81E61FCB771200981262 /* RedditLinkCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B81E51FCB771200981262 /* RedditLinkCellViewModel.swift */; };
 		ED0B81E91FCB7D9000981262 /* RedditClientCoreComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B81E81FCB7D9000981262 /* RedditClientCoreComponents.swift */; };
+		ED395BCF1FCCCF7B0046C900 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395BCE1FCCCF7B0046C900 /* ImageService.swift */; };
+		ED395BD11FCCD0320046C900 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395BD01FCCD0320046C900 /* ImageCache.swift */; };
+		ED395BD31FCCDB3C0046C900 /* ImageLoadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395BD21FCCDB3C0046C900 /* ImageLoadRequest.swift */; };
+		ED395BD51FCCDC2E0046C900 /* ImageLoadRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395BD41FCCDC2E0046C900 /* ImageLoadRequestTests.swift */; };
+		ED395BD71FCCE8330046C900 /* ImageServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395BD61FCCE8330046C900 /* ImageServiceProvider.swift */; };
 		ED4260711FCB19BC00229B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4260701FCB19BC00229B2A /* AppDelegate.swift */; };
 		ED42607A1FCB19BC00229B2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4260791FCB19BC00229B2A /* Assets.xcassets */; };
 		ED42607D1FCB19BC00229B2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED42607B1FCB19BC00229B2A /* LaunchScreen.storyboard */; };
@@ -100,6 +105,11 @@
 		ED0B81E31FCB770400981262 /* RedditLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditLinkCell.swift; sourceTree = "<group>"; };
 		ED0B81E51FCB771200981262 /* RedditLinkCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditLinkCellViewModel.swift; sourceTree = "<group>"; };
 		ED0B81E81FCB7D9000981262 /* RedditClientCoreComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditClientCoreComponents.swift; sourceTree = "<group>"; };
+		ED395BCE1FCCCF7B0046C900 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		ED395BD01FCCD0320046C900 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		ED395BD21FCCDB3C0046C900 /* ImageLoadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadRequest.swift; sourceTree = "<group>"; };
+		ED395BD41FCCDC2E0046C900 /* ImageLoadRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadRequestTests.swift; sourceTree = "<group>"; };
+		ED395BD61FCCE8330046C900 /* ImageServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceProvider.swift; sourceTree = "<group>"; };
 		ED42606D1FCB19BC00229B2A /* RedditClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED4260701FCB19BC00229B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED4260791FCB19BC00229B2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -211,8 +221,18 @@
 			isa = PBXGroup;
 			children = (
 				ED0B81E81FCB7D9000981262 /* RedditClientCoreComponents.swift */,
+				ED395BD61FCCE8330046C900 /* ImageServiceProvider.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		ED395BCD1FCCCF390046C900 /* Image Service */ = {
+			isa = PBXGroup;
+			children = (
+				ED395BCE1FCCCF7B0046C900 /* ImageService.swift */,
+				ED395BD01FCCD0320046C900 /* ImageCache.swift */,
+			);
+			path = "Image Service";
 			sourceTree = "<group>";
 		};
 		ED4260641FCB19BC00229B2A = {
@@ -287,6 +307,7 @@
 		ED42609B1FCB19FD00229B2A /* RedditClientCore */ = {
 			isa = PBXGroup;
 			children = (
+				ED395BCD1FCCCF390046C900 /* Image Service */,
 				ED614F381FCBB39200AE9331 /* Utils */,
 				ED0B81E71FCB7D6E00981262 /* Components */,
 				ED4260E41FCB609800229B2A /* Data Providers */,
@@ -332,6 +353,7 @@
 			children = (
 				ED4260BE1FCB254500229B2A /* HTTPRequest.swift */,
 				ED4260C11FCB28E500229B2A /* GetRiddetTopLinksRequest.swift */,
+				ED395BD21FCCDB3C0046C900 /* ImageLoadRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -349,6 +371,7 @@
 			children = (
 				ED4260C71FCB337800229B2A /* Fixtures */,
 				ED4260C51FCB2B7D00229B2A /* GetRiddetTopLinksRequestTests.swift */,
+				ED395BD41FCCDC2E0046C900 /* ImageLoadRequestTests.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -554,7 +577,7 @@
 				TargetAttributes = {
 					ED42606C1FCB19BC00229B2A = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					ED4260821FCB19BD00229B2A = {
 						CreatedOnToolsVersion = 9.1;
@@ -671,7 +694,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED0B81E91FCB7D9000981262 /* RedditClientCoreComponents.swift in Sources */,
+				ED395BCF1FCCCF7B0046C900 /* ImageService.swift in Sources */,
 				ED4260E71FCB60F600229B2A /* RedditTopLinksDataProvider.swift in Sources */,
+				ED395BD31FCCDB3C0046C900 /* ImageLoadRequest.swift in Sources */,
+				ED395BD11FCCD0320046C900 /* ImageCache.swift in Sources */,
+				ED395BD71FCCE8330046C900 /* ImageServiceProvider.swift in Sources */,
 				ED4260BF1FCB254500229B2A /* HTTPRequest.swift in Sources */,
 				ED4260BD1FCB21CB00229B2A /* NetworkManager.swift in Sources */,
 				ED614F3A1FCBB3B800AE9331 /* TimeInterval+Formatter.swift in Sources */,
@@ -684,6 +711,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED395BD51FCCDC2E0046C900 /* ImageLoadRequestTests.swift in Sources */,
 				ED0B81D71FCB67A000981262 /* RedditTopLinksDataProviderTests.swift in Sources */,
 				ED4260CE1FCB36A000229B2A /* GetRiddetTopLinksRequestTests.swift in Sources */,
 				ED0B81DA1FCB67CF00981262 /* MockNetworkManager.swift in Sources */,
@@ -853,13 +881,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9K2GX4VRRU;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 374XEWX2QT;
 				INFOPLIST_FILE = Source/App/RedditClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.malyhin.maksym.RedditClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "52163671-dc5c-4fbe-8f67-262e0ca2cf45";
+				PROVISIONING_PROFILE_SPECIFIER = "Development Wildcard";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -871,13 +902,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9K2GX4VRRU;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Source/App/RedditClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.malyhin.maksym.RedditClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
