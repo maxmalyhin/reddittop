@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		ED0B81D71FCB67A000981262 /* RedditTopLinksDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B81D61FCB67A000981262 /* RedditTopLinksDataProviderTests.swift */; };
-		ED0B81DA1FCB67CF00981262 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B81D91FCB67CF00981262 /* MockNetworkManager.swift */; };
 		ED0B81DD1FCB711700981262 /* RedditTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B81DC1FCB711700981262 /* RedditTopViewController.swift */; };
 		ED0B81DF1FCB712700981262 /* RedditTopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B81DE1FCB712700981262 /* RedditTopViewModel.swift */; };
 		ED0B81E11FCB75E100981262 /* RedditTopStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0B81E01FCB75E100981262 /* RedditTopStoryboard.storyboard */; };
@@ -101,7 +100,6 @@
 
 /* Begin PBXFileReference section */
 		ED0B81D61FCB67A000981262 /* RedditTopLinksDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditTopLinksDataProviderTests.swift; sourceTree = "<group>"; };
-		ED0B81D91FCB67CF00981262 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		ED0B81DC1FCB711700981262 /* RedditTopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditTopViewController.swift; sourceTree = "<group>"; };
 		ED0B81DE1FCB712700981262 /* RedditTopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditTopViewModel.swift; sourceTree = "<group>"; };
 		ED0B81E01FCB75E100981262 /* RedditTopStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RedditTopStoryboard.storyboard; sourceTree = "<group>"; };
@@ -192,14 +190,6 @@
 				ED0B81D61FCB67A000981262 /* RedditTopLinksDataProviderTests.swift */,
 			);
 			path = "Data Providers";
-			sourceTree = "<group>";
-		};
-		ED0B81D81FCB67B900981262 /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				ED0B81D91FCB67CF00981262 /* MockNetworkManager.swift */,
-			);
-			path = Mock;
 			sourceTree = "<group>";
 		};
 		ED0B81DB1FCB70DB00981262 /* RedditTop */ = {
@@ -327,7 +317,6 @@
 		ED4260A81FCB19FD00229B2A /* RedditClientCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				ED0B81D81FCB67B900981262 /* Mock */,
 				ED0B81D51FCB676B00981262 /* Data Providers */,
 				ED4260CA1FCB359400229B2A /* FixtureLoader */,
 				ED4260C31FCB2B4D00229B2A /* Networking */,
@@ -732,7 +721,6 @@
 				ED395BD51FCCDC2E0046C900 /* ImageLoadRequestTests.swift in Sources */,
 				ED0B81D71FCB67A000981262 /* RedditTopLinksDataProviderTests.swift in Sources */,
 				ED4260CE1FCB36A000229B2A /* GetRiddetTopLinksRequestTests.swift in Sources */,
-				ED0B81DA1FCB67CF00981262 /* MockNetworkManager.swift in Sources */,
 				ED4260CC1FCB35B200229B2A /* FixtureLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
