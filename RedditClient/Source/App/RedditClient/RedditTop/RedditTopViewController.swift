@@ -33,6 +33,9 @@ final class RedditTopViewController: UITableViewController {
 
     // MARK: View model state
     fileprivate func updateTableView() {
+        // In a rear world application, I would calculate the diff between previous and new list of models and
+        // then call methods such a `insertRows` of `UITableView` based on the diff to provide smooth animation,
+        // because `reloadSections` usually leads to "flickering" especially in combination with dynamic cell height.
         self.tableView.reloadSections(IndexSet([0]), with: .bottom)
     }
 
