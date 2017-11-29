@@ -10,6 +10,7 @@ import Foundation
 import RedditClientCore
 
 protocol RedditLinkCellViewModelProtocol: class {
+    var identifier: String { get }
     var title: String { get }
     var author: String { get }
     var commentsCountString: String { get }
@@ -28,7 +29,6 @@ protocol RedditLinkCellViewModelProtocol: class {
 }
 
 final class RedditLinkCellViewModel: RedditLinkCellViewModelProtocol {
-
     let imageService: ImageServiceProtocol
 
     let linkItem: RedditLinkItem
@@ -39,6 +39,10 @@ final class RedditLinkCellViewModel: RedditLinkCellViewModelProtocol {
         self.imageService = imageService
     }
 
+    var identifier: String {
+        return self.linkItem.link.identifier
+    }
+    
     var title: String {
         return self.linkItem.link.title
     }

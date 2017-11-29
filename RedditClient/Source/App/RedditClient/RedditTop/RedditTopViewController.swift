@@ -32,7 +32,6 @@ final class RedditTopViewController: UITableViewController {
     }
 
     // MARK: View model state
-
     fileprivate func updateTableView() {
         self.tableView.reloadSections(IndexSet([0]), with: .bottom)
     }
@@ -61,9 +60,17 @@ final class RedditTopViewController: UITableViewController {
     }
 
     // MARK: -
-    func show(url: URL) {
+    fileprivate var presentedLinkURL: URL?
+    func show(url: URL, animated: Bool = true) {
         let viewController = SFSafariViewController(url: url)
-        self.present(viewController, animated: true, completion: nil)
+
+        // I was not able to restore SFSafariViewController state using UIKit provided methods.
+        // A workaround implemented instead.
+//        viewController.restorationIdentifier = "SFSafariViewController"
+
+        // Is used to restore presented view controller manually instead.
+        self.presentedLinkURL = url
+        self.present(viewController, animated: animated, completion: nil)
     }
 }
 
@@ -120,6 +127,50 @@ extension RedditTopViewController: RedditTopViewModelDelegate {
 
     func viewModel(_ viewModel: RedditTopViewModelProtocol, viewShouldShowPageWithURL url: URL) {
         self.show(url: url)
+    }
+}
+
+extension RedditTopViewController: UIDataSourceModelAssociation {
+    func modelIdentifierForElement(at idx: IndexPath, in view: UIView) -> String? {
+        guard !idx.isEmpty else { return nil }
+        guard idx.row < self.viewModel.linkViewModels.count else {
+            assertionFailure("Looks like an error happaned during last state encoding")
+            return nil
+        }
+
+        return self.viewModel.linkViewModels[idx.row].identifier
+    }
+
+    func indexPathForElement(withModelIdentifier identifier: String, in view: UIView) -> IndexPath? {
+
+        for (index, model) in self.viewModel.linkViewModels.enumerated() {
+            if model.identifier == identifier {
+                return IndexPath(row: index, section: 0)
+            }
+        }
+        return nil
+    }
+
+    override func encodeRestorableState(with coder: NSCoder) {
+        self.viewModel.encodeRestorableState(with: coder)
+        coder.encode(self.presentedLinkURL, forKey: "presentedLinkURL")
+        super.encodeRestorableState(with: coder)
+    }
+
+    override func decodeRestorableState(with coder: NSCoder) {
+        self.viewModel.decodeRestorableState(with: coder)
+        super.decodeRestorableState(with: coder)
+
+        self.presentedLinkURL = coder.decodeObject(forKey: "presentedLinkURL") as? URL
+    }
+
+    override func applicationFinishedRestoringState() {
+        // Workaround - present the link details manually.
+        if let presentedURL = self.presentedLinkURL {
+            DispatchQueue.main.async { [weak self] in
+                self?.show(url: presentedURL, animated: false)
+            }
+        }
     }
 }
 

@@ -69,6 +69,7 @@ final class RedditLinkCell: UITableViewCell {
     private func showImage(withURL url: URL) {
         guard let presentingViewController = self.presentingViewController else { return }
         let safariViewController = SFSafariViewController(url: url)
+        safariViewController.restorationIdentifier = "SFSafariViewController-Image"
         presentingViewController.present(safariViewController, animated: true, completion: nil)
     }
 

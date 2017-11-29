@@ -8,8 +8,8 @@
 
 import Foundation
 
-public struct RedditImage: Decodable {
-    public struct Variant: Decodable {
+public struct RedditImage: Codable {
+    public struct Variant: Codable {
         public let url: URL
         public let height: CGFloat
         public let width: CGFloat

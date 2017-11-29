@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct RedditLinkItem: Decodable {
+public struct RedditLinkItem: Codable {
     public let kind: String
     public let link: RedditLink
 
@@ -18,7 +18,7 @@ public struct RedditLinkItem: Decodable {
     }
 }
 
-public struct RedditLink: Decodable {
+public struct RedditLink: Codable {
     public let identifier: String
     public let url: URL
     public let title: String
@@ -39,7 +39,7 @@ public struct RedditLink: Decodable {
         case preview
     }
 
-    public struct Preview: Decodable {
+    public struct Preview: Codable {
         public let images: [RedditImage]
     }
 }
